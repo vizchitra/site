@@ -52,7 +52,9 @@
 	});
 </script>
 
-<div class="divider-container my-5 w-full" bind:clientWidth={width}>
+<svelte:window bind:innerWidth={width} />
+
+<div class="divider-container relative my-5" style="height: {height}px;">
 	<svg {width} {height} viewBox="0 0 {width} {height}" preserveAspectRatio="xMidYMid meet">
 		{#each lines as line}
 			<line
@@ -71,3 +73,14 @@
 		{/each}
 	</svg>
 </div>
+
+<style>
+	svg {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		width: 100vw;
+	}
+</style>
